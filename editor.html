@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html ng-app="plunker">
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta charset="utf-8" />
-    <title>AngularJS Joydip</title>
-    <script>
-        document.write('<base href="' + document.location + '" />');
-    </script>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.min.js"></script>
-    <script src="app/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
-
-</head>
-<body>
-<div class="container" ng-controller="editor">
-<h1> Editor</h1>
-<form name="myForm"  >
-<textarea type="text" name="textarea" style="width:50%" rows="10" ng-model="editorText"></textarea>
-<br>
-<br>
-<button type="button" ng-click="save(editorText)" > save </button>
-</form>
-Your Saved Text :{{editorText}}
-
-</div>
-
-</body>
+   <head lang="en">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>AngularJS Joydip</title>
+      <script>
+         document.write('<base href="' + document.location + '" />');
+      </script>
+      <link rel="stylesheet" href="style.css" />
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.min.js"></script>
+      <script src="app/app.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
+      <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+   </head>
+   <body>
+      <div class="container" ng-controller="editor">
+         <h1> Editor</h1>
+         <form name="myForm"  >
+            <textarea type="text" name="textarea" style="width:50%" rows="10" ng-model="editorText"></textarea>
+            <br>
+            <br>
+            <button type="button" ng-click="save(editorText)" > save </button>
+         </form>
+         <div id="showStored" ng-repeat="note in notes" >
+            <div class="card-deck-wrapper">
+               <div class="card-deck ">
+                  <div class="card ">
+                     <div class="card-block ">
+                        <p class="card-text">{{note.data}}</p>
+                        <p class="card-text"><small class="text-muted" ng-click="remove($index,note)">Remove</small></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <br>
+         </div>
+      </div>
+   </body>
 </html>
