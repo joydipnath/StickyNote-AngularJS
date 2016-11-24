@@ -18,7 +18,6 @@ app.controller("editor", function($scope, $localStorage) {
 					localStorage.setItem( key, JSON.stringify(createData) );
 					totalItem = localStorage.length;	
 					$scope.notes.push(createData);
-					
 				}
 
             $scope.remove = function(index,note) {
@@ -26,4 +25,27 @@ app.controller("editor", function($scope, $localStorage) {
 				localStorage.removeItem("StickyNote_Joydip-"+note.id);
 				$scope.notes.splice(index,1);
             }
+			
+			$scope.doubleClick = function(index,newVal) {
+					$scope.hideOnBlur = true;
+					$scope.inputShow = true;
+					$scope.item = newVal;
+					$scope.index = index;
+            }
+			
+			$scope.saveNew = function(index,note){
+				//alert(index + note);
+				index +=1;
+				alert(index + note);
+							var totalItem  = localStorage.length;
+							var key   = "StickyNote_Joydip-" + index ;
+							var createData = {
+								id    : index,
+								data  : note
+							
+							};
+					localStorage.setItem( key, JSON.stringify(createData) );
+					//totalItem = localStorage.length;	
+					$scope.notes.push(createData);
+			}
 });
